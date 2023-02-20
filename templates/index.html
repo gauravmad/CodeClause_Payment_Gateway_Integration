@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+   
+
+
+  <div class="md:m-auto w-full md:w-[80vw] py-3">
+    <h1 class="text-4xl font-bold text-center text-cyan-900 my-3 mb-3"> NIKE New Collection!</h1>
+
+    <div class="flex flex-wrap-reverse gap-y-2 justify-between items-center">
+
+      <div class="lg:w-[30rem] w-full">
+        <p class="text-slate-600 font-semibold">NIKE</p>
+        <h1 class="text-2xl font-semibold my-2">Jordan Shoes For Men's Boots For Men &nbsp;<span class="text-blue-700">(Blue)</span></h1>
+        <div class="flex ">
+          <h2 class="text-3xl font-bold my-2">&#8377; 7599</h2>
+          <span class="text-lg mx-6 text-slate-400 leading-10 pt-2"><strike>&#8377; 14599</strike></span>
+          <span class="text-xl mx-1 text-green-700 leading-10 font-bold pt-1">48% off</span>
+        </div>  
+        <div class="py-2">
+          <h2 class="text-lg font-semibold my-1 text-cyan-700">Available Offers</h2>
+          <h3><span><i class="ri-price-tag-3-fill"></i></span><b> &nbsp;Bank Offer </b>5% Cashback on Flipkart Axis Bank Card &nbsp;<span class="text-blue-700 font-semibold">T&C</span></h3>
+        </div>   
+        <div>
+          <h2 class="text-purple-700 font-semibold">Size UK-India</h2>
+          <div class="flex my-2">
+            <button class="outline outline-offset-0 px-2 mx-2">6</button>
+            <button class="outline outline-offset-0 px-2 mx-2">7</button>
+            <button class="outline outline-offset-0 px-2 mx-2">8</button>
+            <button class="outline outline-offset-0 px-2 mx-2">9</button>
+            <button class="outline outline-offset-0 px-2 mx-2">10</button>
+          </div>
+        </div> 
+        <div class="py-3">
+          <h2 class="text-xl my-1 font-semibold text-pink-700 text-center">Buy Now</h2>
+          <script src="https://www.paypal.com/sdk/js?client-id=AbfuCXZh32X0weFCh9q9c4idHaJz70zc7Y3gmU15BhBsqB4dJQKDQwx5-5wp_5P3_fErYA7u0fvI3ClN&currency=USD"></script>
+  
+  <div id="paypal-button-container"></div>
+  <script>
+    paypal.Buttons({
+       style: {
+         layout:  'vertical',
+         color:   'blue',
+         shape:   'pill',
+         label:   'paypal'
+        },
+      createOrder: (data, actions) => {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: '92.16'
+            }
+          }]
+        });
+      },
+      // Finalize the transaction after payer approval
+      onApprove: (data, actions) => {
+        return actions.order.capture().then(function(orderData) {
+          // Successful capture! For dev/demo purposes:
+          console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+          const transaction = orderData.purchase_units[0].payments.captures[0];
+          alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+          
+        });
+      }
+    }).render('#paypal-button-container');
+  </script>
+        </div>
+      </div>
+
+      <div class="w-full lg:w-1/2 bg-slate-50 rounded-3xl card ">
+        <img src="/static/Photos/nike shoes.png" class="m-auto" alt="">
+      </div>
+
+    </div>  
+  </div>
+
+
+
+{% endblock %}

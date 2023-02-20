@@ -1,0 +1,19 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+    background-color: rgb(251, 254, 254);
+}
+li{
+    text-decoration: none;
+}
+nav{
+    box-shadow: 1px 1px 6px 5px rgb(209, 232, 240);
+}
+div.card{
+    transform: rotateX(45deg);
+    border-radius: 15px;
+}
